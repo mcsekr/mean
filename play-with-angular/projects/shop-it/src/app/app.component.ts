@@ -17,28 +17,28 @@ export class AppComponent {
       description: 'Laptop Description',
       imagePath: 'assets/images/Laptop.png'
     },
-    // {
-    //   id: 2,
-    //   name: 'Mobile',
-    //   price: 1000,
-    //   isAvailable: true,
-    //   description: 'Mobile Description',
-    //   imagePath: 'assets/images/Mobile.png'
-    // }
+    {
+      id: 2,
+      name: 'Mobile',
+      price: 1000,
+      isAvailable: true,
+      description: 'Mobile Description',
+      imagePath: 'assets/images/Mobile.png'
+    }
   ]
 
-  currentTab=1
+  currentTab = 1
 
-  isTabSelected(tabIndex:number){
-    return this.currentTab===tabIndex
+  isTabSelected(tabIndex: number) {
+    return this.currentTab === tabIndex
   }
 
   handleBuy(event: MouseEvent) {
     console.log("handling buy ");
     console.log(event);
   }
-  handleTabChange(event: MouseEvent,tabIndex:number) {
-    this.currentTab=tabIndex
+  handleTabChange(event: MouseEvent, tabIndex: number) {
+    this.currentTab = tabIndex
   }
 
 }
