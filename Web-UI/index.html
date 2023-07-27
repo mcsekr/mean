@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body class="container">
+
+    <div class="display-1">Web-UI</div>
+    <hr />
+    <button type="button" class="btn btn-dark">Load top-5-todos</button <hr />
+    <hr />
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">title</th>
+                <th scope="col">completed</th>
+                <th scope="col">User</th>
+            </tr>
+        </thead>
+        <tbody id="todos-body">
+        </tbody>
+    </table>
+    <hr />
+    <div class="card">
+        <div class="card-header">Welcome</div>
+        <div class="card-body">
+            Welcome to Web UI world
+        </div>
+    </div>
+    <hr />
+    <button class="btn btn-lg btn-primary">greet me</button>
+    <button class="btn btn-lg btn-success">show</button>
+    <button class="btn btn-lg btn-danger">hide</button>
+    <hr />
+    <script src="./index.js"></script>
+</body>
+
+</html>
