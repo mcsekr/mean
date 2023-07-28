@@ -7,16 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shop-IT';
-  cart: Array<any> = [];
-
   isCartOpen: boolean = false;
-
-  handleBuy(event: any) {
-    let product = event;
-    //this.cart.push(product);
-    this.cart = this.cart.concat(product);
-    console.log(this.cart);
-  }
   toggleCartView() {
     this.isCartOpen = !this.isCartOpen
   }

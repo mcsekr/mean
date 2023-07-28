@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
+  // providers: [CartService]
 })
 export class ProductListComponent {
 
@@ -30,13 +32,6 @@ export class ProductListComponent {
       imagePath: 'assets/images/Mobile.png'
     }
   ]
-
-  @Output()
-  buy = new EventEmitter<any>()
-
-  handleBuy(event: any) {
-    this.buy.emit(event);
-  }
 
 
 }

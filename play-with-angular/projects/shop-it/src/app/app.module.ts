@@ -11,6 +11,7 @@ import { ReviewComponent } from './review/review.component';
 import { CartViewComponent } from './cart-view/cart-view.component';
 import { HighlightDirective } from './highlight.directive';
 import { DiscountPipe } from './discount.pipe';
+import { CartService } from './cart.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,9 @@ import { DiscountPipe } from './discount.pipe';
     CommonModule,
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    //CartService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

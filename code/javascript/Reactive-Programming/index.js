@@ -1,109 +1,88 @@
+const Rx = require("rxjs");
 
-const { Subject } = require('rxjs')
+const { Observable, Subject, BehaviorSubject, ReplaySubject } = Rx;
 
-//----------------------------------------------------------
+const dooStream = new Subject();
 
-//----------------------------------------------------------
-
-
-const doorStream = new Subject();
-
-// ----------------------------------------------------------
+//----------------------------------------------------------------
 // Light
-// ----------------------------------------------------------
+//----------------------------------------------------------------
 
 const light = {
-    on() {
-        console.log("light ON");
-    },
-    off() {
-        console.log("light OFF");
+  on: function () {
+    console.log("Light on");
+  },
+  off: function () {
+    console.log("Light off");
+  },
+};
+
+dooStream.subscribe({
+  next: (event) => {
+    let { type } = event;
+    switch (type) {
+      case "open":
+        light.on();
+        break;
+      case "close":
+        light.off();
+        break;
+      default:
     }
-}
+  },
+});
 
-doorStream.subscribe({
-    next: e => {
-        if (e.type === "OPEN") {
-            light.on()
-        }
-        if (e.type === "CLOSE") {
-            light.off()
-        }
-    }
-})
-
-
-// ----------------------------------------------------------
+//----------------------------------------------------------------
 // AC
-// ----------------------------------------------------------
+//----------------------------------------------------------------
 
 const AC = {
-    on() {
-        console.log("AC ON");
-    },
-    off() {
-        console.log("AC OFF");
+  on: function () {
+    console.log("AC on");
+  },
+  off: function () {
+    console.log("AC off");
+  },
+};
+
+dooStream.subscribe({
+  next: (event) => {
+    let { type } = event;
+    switch (type) {
+      case "open":
+        AC.on();
+        break;
+      case "close":
+        AC.off();
+        break;
+      default:
     }
-}
+  },
+});
 
-const subscription = doorStream.subscribe({
-    next: e => {
-        if (e.type === "OPEN") {
-            AC.on()
-        }
-        if (e.type === "CLOSE") {
-            AC.off()
-        }
-    }
+//----------------------------------------------------------------
+// Door module
+//----------------------------------------------------------------
 
-})
-
-setTimeout(() => {
-    subscription.unsubscribe();
-}, 4000);
-
-
-// ----------------------------------------------------------
-// Door
-// ----------------------------------------------------------
-const door = {
-    // doorListeners: [],
-    // addDoorListener(listener) {
-    //     this.doorListeners.push(listener)
-    // },
-    open() {
-        console.log("door opened..");
-        // this.doorListeners.forEach(listener => {
-        //     listener.on() // 
-        // })
-        doorStream.next({ type: 'OPEN' })
-    },
-    close() {
-        console.log("door closed");
-        // this.doorListeners.forEach(listener => {
-        //     listener.off()
-        // })
-        doorStream.next({ type: 'CLOSE' })
-    }
+class Door {
+  open() {
+    console.log("Door opened");
+    dooStream.next({ type: "open" });
+  }
+  close() {
+    console.log("Door closed");
+    dooStream.next({ type: "close" });
+  }
 }
 
 //----------------------------------------------------------------
-// door.addDoorListener(light)
-// door.addDoorListener(AC)
-//----------------------------------------------------------------
-
+const door = new Door();
 
 setTimeout(() => {
-    door.open();
-    setTimeout(() => {
-        door.close()
-    }, 2000);
-
-    setTimeout(() => {
-        door.open();
-        setTimeout(() => {
-            door.close()
-        }, 2000);
-    }, 2000);
-
+  door.open();
+  setTimeout(() => {
+    door.close();
+  }, 2000);
 }, 2000);
+
+//----------------------------------------------------------------

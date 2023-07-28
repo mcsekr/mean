@@ -1,5 +1,5 @@
 <div class="list-group">
     <div class="list-group-item" *ngFor="let product of products | slice:0:10;let idx=index">
-        <app-product [value]="product" (buy)="handleBuy($event)"></app-product>
+        <app-product [value]="product"></app-product>
     </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cart-badge',
@@ -7,7 +8,22 @@ import { Component, Input } from '@angular/core';
 })
 export class CartBadgeComponent {
 
-  @Input("value")
   count: number = 0;
+
+  constructor(private cartService: CartService) { }
+
+  ngOnInit() {
+    console.log("CartBadgeComponent::ngOnInit");
+    this.cartService.cart$.subscribe({
+      next: (cart) => {
+        this.count = cart.length;
+      }
+    })
+  }
+
+  ngOnDestroy() {
+    console.log("CartBadgeComponent::ngOnDestroy");
+    this.cartService.cart$.unsubscribe();
+  }
 
 }

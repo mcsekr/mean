@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
+@Injectable({
+  providedIn: 'root'
+})
 export class CartService {
 
-  constructor() { }
+  constructor() {
+    console.log("CartService::constructor");
+  }
 
   cart: Array<any> = []
+  cart$ = new BehaviorSubject<Array<any>>(this.cart)
 
   addToCart(item: any) {
     this.cart.push(item)
-    console.log(this.cart);
+    this.cart$.next(this.cart)
   }
 
   removeFromCart(item: any) {

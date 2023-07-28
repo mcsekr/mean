@@ -1,4 +1,5 @@
 import { Component, ContentChild, ElementRef, Input, SimpleChanges, ViewChild } from '@angular/core';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-cart-view',
@@ -7,7 +8,6 @@ import { Component, ContentChild, ElementRef, Input, SimpleChanges, ViewChild } 
 })
 export class CartViewComponent {
 
-  @Input("value")
   cart: Array<any> = [];
 
   @ContentChild("h")
@@ -17,7 +17,7 @@ export class CartViewComponent {
   table!: ElementRef;
 
 
-  constructor() {
+  constructor(private cartService: CartService) {
     console.log("CartViewComponent::constructor");
     // todo one-time intialization
   }
@@ -31,6 +31,7 @@ export class CartViewComponent {
   ngOnInit() {
     console.log("CartViewComponent::ngOnInit");
     // todo one-time initialization
+    this.cart = this.cartService.getCart();
   }
 
   ngAfterContentInit() {
