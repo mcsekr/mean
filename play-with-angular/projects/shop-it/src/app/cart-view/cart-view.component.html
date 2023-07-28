@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-header">
+        <ng-content select=".h"></ng-content>
+    </div>
+    <div class="card-body">
+        <table class="table" #cartTable>
+            <tbody>
+                <tr appHighlight *ngFor="let cartLine of cart">
+                    <td>{{cartLine.id}}</td>
+                    <td>{{cartLine.name}}</td>
+                    <td>{{cartLine.price}}</td>
+                    <td>{{1}}</td>
+                    <td>{{1*cartLine.price}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <ng-content select=".f"></ng-content>
+    </div>
+</div>

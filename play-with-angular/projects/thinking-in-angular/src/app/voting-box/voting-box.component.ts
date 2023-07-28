@@ -14,12 +14,36 @@ export class VotingBoxComponent {
     "Node"
   ]
 
-  votingLines = [
-    { item: "Mongo", likes: 1, dislikes: 2 },
-    { item: "Express", likes: 2, dislikes: 3 },
-    { item: "Angular", likes: 3, dislikes: 4 },
-    { item: "Node", likes: 4, dislikes: 5 }
-  ]
+  votingLines: Array<any> = []
+
+  handleVote(event: any) {
+    let { type, item } = event;
+    let votingLine = this.votingLines.find(line => line.item === item);
+    if (votingLine) {
+      if (type === "like") {
+        votingLine.likes++;
+      }
+      if (type === "dislike") {
+        votingLine.dislikes++;
+      }
+    } else {
+      if (type === "like") {
+        this.votingLines.push({
+          item: item,
+          likes: 1,
+          dislikes: 0
+        })
+      }
+      if (type === "dislike") {
+        this.votingLines.push({
+          item: item,
+          likes: 0,
+          dislikes: 1
+        })
+      }
+    }
+
+  }
 
 
 }

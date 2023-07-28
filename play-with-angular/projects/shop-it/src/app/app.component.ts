@@ -6,39 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
   title = 'shop-IT';
-  products = [
-    {
-      id: 1,
-      name: 'Laptop',
-      price: 10000,
-      isAvailable: true,
-      description: 'Laptop Description',
-      imagePath: 'assets/images/Laptop.png'
-    },
-    {
-      id: 2,
-      name: 'Mobile',
-      price: 1000,
-      isAvailable: true,
-      description: 'Mobile Description',
-      imagePath: 'assets/images/Mobile.png'
-    }
-  ]
+  cart: Array<any> = [];
 
-  currentTab = 1
+  isCartOpen: boolean = false;
 
-  isTabSelected(tabIndex: number) {
-    return this.currentTab === tabIndex
+  handleBuy(event: any) {
+    let product = event;
+    //this.cart.push(product);
+    this.cart = this.cart.concat(product);
+    console.log(this.cart);
   }
-
-  handleBuy(event: MouseEvent) {
-    console.log("handling buy ");
-    console.log(event);
+  toggleCartView() {
+    this.isCartOpen = !this.isCartOpen
   }
-  handleTabChange(event: MouseEvent, tabIndex: number) {
-    this.currentTab = tabIndex
-  }
-
 }

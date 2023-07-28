@@ -5,8 +5,8 @@
         </div>
         <hr />
         <div class="d-flex justify-content-around">
-            <button class="btn btn-sm btn-primary">like</button>
-            <button class="btn btn-sm btn-danger">dislike</button>
+            <button (click)="handleLike($event)" class="btn btn-sm btn-primary">like</button>
+            <button (click)="handleDislike($event)" class="btn btn-sm btn-danger">dislike</button>
         </div>
     </div>
 </div>
