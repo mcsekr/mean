@@ -4,7 +4,7 @@
     </div>
     <div class="col-8">
         <!-- <pre>{{product|json}}</pre> -->
-        <div>{{product.name|uppercase}} - {{product.makeDate|date:'yyyy'}}</div>
+        <div>{{product.name|uppercase}}</div>
         <div>{{product.price|discount|currency:product.currencyCode:'code'}}</div>
         <button (click)="handleBuy($event)" class="btn btn-primary" [disabled]="!product.isAvailable">
             Buy
@@ -26,6 +26,7 @@
         <div *ngIf="isTabSelected(1)">{{product.description | slice:0:100}}</div>
         <div *ngIf="isTabSelected(2)">Not Yet</div>
         <div *ngIf="isTabSelected(3)">
+            <app-review-form (onNewReview)="handleNewReview($event)"></app-review-form>
             <div class="mt-2" *ngFor="let review of top5Reviews">
                 <app-review [value]="review"></app-review>
             </div>

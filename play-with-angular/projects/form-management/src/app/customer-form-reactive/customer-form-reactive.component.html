@@ -1,0 +1,119 @@
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">Customer Form</div>
+            <div class="card-body">
+                <form [formGroup]="customeForm" (submit)="handleSubmit()">
+                    <div class="form-group">
+                        <label for="name">FirstName</label>
+                        <input type="text" formControlName="fName" class="form-control">
+                        <div class="text-danger">
+                            <div *ngIf="customeForm.controls['fName'].invalid && customeForm.controls['fName'].touched">
+                                <div *ngIf="customeForm.controls['fName'].errors['required']">
+                                    First Name is Required
+                                </div>
+                                <div *ngIf="customeForm.controls['fName'].errors['minlength']">
+                                    First Name must be at least 3 characters
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">LastName</label>
+                        <input type="text" formControlName="lName" class="form-control">
+                    </div>
+                    <div formGroupName="emailGroup">
+                        <div class="form-group">
+                            <label for="name">Email</label>
+                            <input type="text" formControlName="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">ConfirmEmail</label>
+                            <input type="text" formControlName="confirmEmail" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Mobile</label>
+                        <input type="text" formControlName="mobile" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Notification</label><br />
+                        <input type="radio" (click)="handleNotiChange('email')" value="email"
+                            formControlName="notiType" /> Email
+                        &nbsp;
+                        <input type="radio" (click)="handleNotiChange('sms')" value="sms" formControlName="notiType" />
+                        SMS
+                    </div>
+                    <hr />
+                    <button type="button" class="btn btn-danger" (click)="handleNewAddress()">Add New Address</button>
+                    <hr />
+                    <div formArrayName="addressFormArray">
+                        <div class="card" *ngFor="let group of addressFormArray.controls;let i=index"
+                            [formGroup]="group">
+                            <div class="card-header">Address - {{i}} <button (click)="handleRemoveAddress(i)"
+                                    class="btn btn-sm btn-danger">-</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label class="form-control-label">Street</label>
+                                    <input formControlName="street" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">City</label>
+                                    <input formControlName="city" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">State</label>
+                                    <input formControlName="state" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Zip</label>
+                                    <input formControlName="zip" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Country</label>
+                                    <input formControlName="country" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <button [disabled]="customeForm.invalid" type="submit" class="btn btn-primary">
+                        Submit
+                    </button>
+                    &nbsp;
+                    <button type="button" class="btn btn-primary">
+                        Load Customer
+                    </button>
+                    <hr />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <pre>
+            <hr/>
+            FormModel
+            <hr/>
+            {{customeForm.value|json}}
+            <hr/>
+            FormGroup
+            <hr/>
+            is Pristine : {{customeForm.pristine}}
+            is Dirty    : {{customeForm.dirty}}
+            is UnTouched: {{customeForm.untouched}}
+            is Touched  : {{customeForm.touched}}
+            is Valid    : {{customeForm.valid}}
+            is Invalid  : {{customeForm.invalid}}
+            <hr/>
+                FomControl ( e.g fName)
+            <hr/>
+            is Pristine : {{customeForm.controls['fName'].pristine}}
+            is Dirty    : {{customeForm.controls['fName'].dirty}}
+            is UnTouched: {{customeForm.controls['fName'].untouched}}
+            is Touched  : {{customeForm.controls['fName'].touched}}
+            is Valid    : {{customeForm.controls['fName'].valid}}
+            is Invalid  : {{customeForm.controls['fName'].invalid}}
+        </pre>
+    </div>
+</div>

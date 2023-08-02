@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">Customer Form</div>
+            <div class="card-body">
+                <form #customeForm="ngForm" (submit)="handleForm(customeForm)">
+                    <div class="form-group">
+                        <label for="name">FirstName</label>
+                        <input type="text" required minlength="3" [(ngModel)]="customerModel.fName" name="fName"
+                            class="form-control">
+                        <div class="text-danger">
+                            <div *ngIf="customeForm.controls['fName'].invalid && customeForm.controls['fName'].touched">
+                                <div *ngIf="customeForm.controls['fName'].errors['required']">
+                                    First Name is Required
+                                </div>
+                                <div *ngIf="customeForm.controls['fName'].errors['minlength']">
+                                    First Name must be at least 3 characters
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">LastName</label>
+                        <input type="text" [(ngModel)]="customerModel.lName" name="lName" class="form-control">
+                    </div>
+                    <hr />
+                    <button [disabled]="customeForm.invalid" type="submit" class="btn btn-primary">
+                        Submit
+                    </button>
+                    &nbsp;
+                    <button (click)="loadCustomerData()" type="button" class="btn btn-primary">
+                        Load Customer
+                    </button>
+                    <hr />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <pre>
+            <hr/>
+            FormModel
+            <hr/>
+            {{customeForm.value|json}}
+            <hr/>
+            CustomerModel
+            <hr/>
+            {{customerModel|json}}
+            <hr/>
+            FormGroup
+            <hr/>
+            is Pristine : {{customeForm.pristine}}
+            is Dirty    : {{customeForm.dirty}}
+            is UnTouched: {{customeForm.untouched}}
+            is Touched  : {{customeForm.touched}}
+            is Valid    : {{customeForm.valid}}
+            is Invalid  : {{customeForm.invalid}}
+            <hr/>
+                FomControl ( e.g fName)
+            <hr/>
+            is Pristine : {{customeForm.controls['fName'].pristine}}
+            is Dirty    : {{customeForm.controls['fName'].dirty}}
+            is UnTouched: {{customeForm.controls['fName'].untouched}}
+            is Touched  : {{customeForm.controls['fName'].touched}}
+            is Valid    : {{customeForm.controls['fName'].valid}}
+            is Invalid  : {{customeForm.controls['fName'].invalid}}
+        </pre>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { CartLine } from '../model/cart-line';
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,15 @@ export class CartService {
     console.log("CartService::constructor");
   }
 
-  cart: Array<any> = []
+  cart: Array<CartLine> = []
   cart$ = new BehaviorSubject<Array<any>>(this.cart)
 
-  addToCart(item: any) {
+  addToCart(item: CartLine) {
     this.cart.push(item)
     this.cart$.next(this.cart)
   }
 
-  removeFromCart(item: any) {
+  removeFromCart(item: CartLine) {
     this.cart.splice(this.cart.indexOf(item), 1)
   }
 

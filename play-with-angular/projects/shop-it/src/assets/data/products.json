@@ -1,0 +1,22 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Laptop",
+            "price": 10000,
+            "currencyCode": "INR",
+            "isAvailable": true,
+            "description": "Laptop Description",
+            "imagePath": "assets/images/Laptop.png"
+        },
+        {
+            "id": 2,
+            "name": "Mobile",
+            "price": 1000,
+            "currencyCode": "INR",
+            "isAvailable": true,
+            "description": "Mobile Description",
+            "imagePath": "assets/images/Mobile.png"
+        }
+    ]
+}
