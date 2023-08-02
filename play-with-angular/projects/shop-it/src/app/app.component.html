@@ -4,11 +4,22 @@
     <div class="container">
       <app-header [title]="title"></app-header>
       <app-cart-badge></app-cart-badge>
-      <button class="btn btn-dark" href="#" (click)="toggleCartView()">{{isCartOpen?'Products':'Cart'}}</button>
-      <app-cart-view *ngIf="isCartOpen">
-        <div class="h" #h>NTT-cart-view</div>
-        <div class="f" #f>NTT@2023</div>
-      </app-cart-view>
-      <app-product-list *ngIf="!isCartOpen"></app-product-list>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/orders">Orders</a>
+        </li>
+      </ul>
+      <hr />
+      <router-outlet></router-outlet>
     </div>
   </div>
+</div>

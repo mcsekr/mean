@@ -14,6 +14,27 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { DiscountPipe } from './pipes/discount.pipe';
 import { ReviewFormComponent } from './components/review-form/review-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RouterModule, Routes } from '@angular/router';
+import { OrdersViewComponent } from './components/orders-view/orders-view.component';
+import { ordersViewActivateGuard } from './guards/orders-view-activate.guard';
+import { ordersViewDeactivateGuard } from './guards/orders-view-deactivate.guard';
+
+
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'products', component: ProductListComponent },
+  { path: 'cart', component: CartViewComponent },
+  {
+    path: 'orders',
+    component: OrdersViewComponent,
+    canActivate: [ordersViewActivateGuard],
+    canDeactivate: [ordersViewDeactivateGuard]
+  },
+  { path: '**', component: NotFoundComponent }
+]
 
 @NgModule({
   declarations: [
@@ -26,13 +47,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     CartViewComponent,
     HighlightDirective,
     DiscountPipe,
-    ReviewFormComponent
+    ReviewFormComponent,
+    HomeComponent,
+    NotFoundComponent,
+    OrdersViewComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes, { enableTracing: true })
   ],
   providers: [
   ],

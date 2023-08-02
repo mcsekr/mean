@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+// import lodash from 'lodash';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,8 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shop-IT';
-  isCartOpen: boolean = false;
-  toggleCartView() {
-    this.isCartOpen = !this.isCartOpen
-  }
+
 }
