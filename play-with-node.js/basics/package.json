@@ -1,0 +1,16 @@
+{
+  "name": "1-core-concepts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "blocking-IO.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./http-server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
