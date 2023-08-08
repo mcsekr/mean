@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="display-1"> todos management</div>
+        <hr />
+        <!-- <div class="row">
+            <div class="col-4">
+                <img src="images/Todos_Logo.png" class="img-fluid" />
+            </div>
+        </div> -->
+        <button class="btn btn-primary">
+            Load todos
+        </button>
+        <hr />
+        <form action="todos" method="post">
+            <div class="card">
+                <div class="card-body">
+                    <input name="title" placeholder="What needs to be done?" />
+                </div>
+            </div>
+        </form>
+        <hr />
+        <table class="table">
+            <tbody id="todos">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="./client.js"></script>
+
+</body>
+
+</html>
